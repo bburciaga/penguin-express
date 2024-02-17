@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://7bd10h6fsd15"]
+
+[ext_resource type="Texture2D" uid="uid://coq3x7p6dnl8w" path="res://entities/assets/sprites/enemies/PolarBear.png" id="1_jkbyw"]
+[ext_resource type="Script" path="res://utils/EnemyMovement.gd" id="2_6nueb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j4p5p"]
+radius = 27.0
+height = 72.0
+
+[node name="Polarbear" type="Area2D"]
+script = ExtResource("2_6nueb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("1_jkbyw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_j4p5p")
