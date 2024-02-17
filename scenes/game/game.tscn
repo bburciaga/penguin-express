@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://w4oliocfgp2w"]
+[gd_scene load_steps=2 format=3 uid="uid://w4oliocfgp2w"]
+
+[ext_resource type="PackedScene" uid="uid://j71i0pu216db" path="res://entities/player/player.tscn" id="1_ndvt2"]
 
 [node name="Game" type="Node2D"]
 
@@ -6,3 +8,6 @@
 offset_right = 480.0
 offset_bottom = 840.0
 color = Color(0.780392, 0.941176, 0.847059, 1)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ndvt2")]
+position = Vector2(244, 756)
