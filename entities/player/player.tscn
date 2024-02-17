@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://j71i0pu216db"]
+
+[ext_resource type="PackedScene" uid="uid://cdya25dhs012d" path="res://entities/HealthComponent.tscn" id="1_lgbf4"]
+[ext_resource type="PackedScene" uid="uid://b0pqeqfef3go5" path="res://entities/HitboxComponent.tscn" id="2_wuawv"]
+[ext_resource type="Texture2D" uid="uid://cfuc3bd4dmgwo" path="res://entities/assets/sprites/player/Penguin.png" id="3_x1dnh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84brw"]
+size = Vector2(130, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0owk"]
+size = Vector2(130, 130)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_lgbf4")]
+MAX_HEALTH = 3.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_wuawv")]
+collision_mask = 14
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_84brw")
+
+[node name="Penguin" type="Sprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("3_x1dnh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e0owk")
