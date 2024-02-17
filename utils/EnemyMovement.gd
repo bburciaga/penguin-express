@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed = 100
-var direction = Vector2(-1, 0)
+var direction = Vector2(-0.5, 1)
 
 var color_rect = null
 
@@ -19,4 +19,4 @@ func _check_bounds():
 		if position.x < rect_position.x or position.x > rect_position.x + rect_size.x:
 			direction.x = -direction.x
 		if position.y < rect_position.y or position.y > rect_position.y + rect_size.y:
-			direction.y = -direction.y
+			self.queue_free()
