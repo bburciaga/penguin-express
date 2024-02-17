@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://w4oliocfgp2w"]
+[gd_scene load_steps=3 format=3 uid="uid://w4oliocfgp2w"]
 
-[ext_resource type="PackedScene" uid="uid://j71i0pu216db" path="res://entities/player/player.tscn" id="1_ndvt2"]
+[ext_resource type="PackedScene" uid="uid://bijnyruk0b7du" path="res://entities/player/player.tscn" id="1_ndvt2"]
+[ext_resource type="PackedScene" uid="uid://7bd10h6fsd15" path="res://entities/enemies/polarbear.tscn" id="2_7qy60"]
 
 [node name="Game" type="Node2D"]
 
@@ -11,3 +12,8 @@ color = Color(0.780392, 0.941176, 0.847059, 1)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ndvt2")]
 position = Vector2(244, 756)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Polarbear" parent="." instance=ExtResource("2_7qy60")]
+position = Vector2(433, 27)
