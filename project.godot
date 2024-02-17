@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Penguin Express"
+run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=48
+window/size/viewport_height=84
 
 [rendering]
 
