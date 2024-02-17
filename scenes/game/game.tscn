@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://w4oliocfgp2w"]
+[gd_scene load_steps=4 format=3 uid="uid://w4oliocfgp2w"]
 
-[ext_resource type="PackedScene" uid="uid://bijnyruk0b7du" path="res://entities/player/player.tscn" id="1_ndvt2"]
+[ext_resource type="PackedScene" uid="uid://j71i0pu216db" path="res://entities/player/player.tscn" id="1_ndvt2"]
 [ext_resource type="PackedScene" uid="uid://7bd10h6fsd15" path="res://entities/enemies/polarbear.tscn" id="2_7qy60"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fopp"]
+size = Vector2(20, 840)
 
 [node name="Game" type="Node2D"]
 
@@ -17,3 +20,15 @@ position = Vector2(244, 756)
 
 [node name="Polarbear" parent="." instance=ExtResource("2_7qy60")]
 position = Vector2(433, 27)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(490, 420)
+shape = SubResource("RectangleShape2D_0fopp")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-10, 420)
+shape = SubResource("RectangleShape2D_0fopp")
