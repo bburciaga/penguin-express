@@ -26,8 +26,7 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_84brw")
 
 [node name="Penguin" type="Sprite2D" parent="." groups=["Player"]]
-position = Vector2(-1.90735e-06, 1.90735e-06)
-scale = Vector2(0.034918, 0.034918)
+scale = Vector2(0.5625, 0.5625)
 texture = ExtResource("3_x1dnh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
