@@ -9,4 +9,3 @@ func damage (attack: Attack, activate: bool = false) -> void:
 	
 		var entity = get_parent()
 		print(entity)
-		
