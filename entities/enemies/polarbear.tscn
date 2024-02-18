@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://7bd10h6fsd15"]
 
+[ext_resource type="Script" path="res://entities/enemies/polarbear.gd" id="1_5xjf0"]
 [ext_resource type="Texture2D" uid="uid://coq3x7p6dnl8w" path="res://entities/assets/sprites/enemies/PolarBear.png" id="1_jkbyw"]
-[ext_resource type="Script" path="res://utils/EnemyMovement.gd" id="2_6nueb"]
 [ext_resource type="PackedScene" uid="uid://cdya25dhs012d" path="res://entities/HealthComponent.tscn" id="2_xihxl"]
 [ext_resource type="PackedScene" uid="uid://b0pqeqfef3go5" path="res://entities/HitboxComponent.tscn" id="3_aru8q"]
 
@@ -13,13 +13,15 @@ height = 70.0
 radius = 27.0
 height = 72.0
 
-[node name="Polarbear" type="Area2D" groups=["Stoppable"]]
-script = ExtResource("2_6nueb")
+[node name="PolarBear" type="CharacterBody2D" groups=["Enemy", "Stoppable"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_5xjf0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_xihxl")]
 MAX_HEALTH = 1.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Stoppable"] instance=ExtResource("3_aru8q")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_aru8q")]
 collision_layer = 2
 collision_mask = 12
 health_component = NodePath("../HealthComponent")
@@ -38,3 +40,4 @@ texture = ExtResource("1_jkbyw")
 position = Vector2(0, 9)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_j4p5p")
+disabled = true
