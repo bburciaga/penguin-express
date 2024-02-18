@@ -30,7 +30,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_a5aql")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.035, 0.035)
+position = Vector2(-1.5, 0.499999)
+scale = Vector2(0.523438, 0.523438)
 texture = ExtResource("1_jkbyw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
