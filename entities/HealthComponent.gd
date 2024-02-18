@@ -20,9 +20,9 @@ func damage (attack: Attack, activate: bool = false):
 		await animation.animation_finished
 		animation.animation = "Idle"
 	else:
-		PLAYER.score += 5
-		animation.play("Death")
-		await animation.animation_finished
+		#PLAYER.score += 5
+		#animation.play("Death")
+		#await animation.animation_finished
 		self.queue_free()
 	
 	if health <= 0:
