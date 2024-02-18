@@ -2,10 +2,16 @@ extends CharacterBody2D
 
 @onready var SNOWBALL_PATH: Resource = preload("res://entities/projectiles/snowball.tscn")
 
+enum PowerupState {
+	INACTIVE,
+  	SHIELD
+}
+
 var attack: Attack = Attack.new(1, self.global_position, 5)
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var powerupState: PowerupState = PowerupState.INACTIVE
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -53,3 +59,11 @@ func start_time() -> void:
 	for node in get_tree().get_nodes_in_group("Stoppable"):
 		node.set_process(true)
 		node.set_physics_process(true)
+
+func activate_powerup() -> void:
+	var powerups = ["SHIELD"]
+	var random_index = randi() % powerups.size()
+	var powerup = powerups[random_index]
+	match powerup:
+		"SHIELD":
+			powerupState = PowerupState.SHIELD

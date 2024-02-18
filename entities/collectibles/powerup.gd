@@ -11,6 +11,7 @@ func _physics_process(delta):
 	
 func _on_body_entered(body):
 	if "Player" == body.name:
+		body.activate_powerup()
 		queue_free()
 
 func _check_bounds():
