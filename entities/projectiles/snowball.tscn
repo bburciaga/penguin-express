@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_eo3cw"]
 radius = 19.105
 
-[node name="Snowball" type="Area2D" groups=["Projectile"]]
+[node name="Snowball" type="Area2D" groups=["Projectile", "Stoppable"]]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_ggjxo")
