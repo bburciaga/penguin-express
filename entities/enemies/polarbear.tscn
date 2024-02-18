@@ -13,13 +13,13 @@ height = 70.0
 radius = 27.0
 height = 72.0
 
-[node name="Polarbear" type="Area2D" groups=["Enemy", "Stoppable"]]
+[node name="Polarbear" type="Area2D" groups=["Enemy"]]
 script = ExtResource("2_6nueb")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_xihxl")]
 MAX_HEALTH = 1.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy", "Stoppable"] instance=ExtResource("3_aru8q")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("3_aru8q")]
 collision_layer = 2
 collision_mask = 12
 health_component = NodePath("../HealthComponent")
