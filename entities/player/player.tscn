@@ -12,6 +12,7 @@ size = Vector2(72, 72)
 size = Vector2(72, 72)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 10
 script = ExtResource("1_vb2cn")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_lgbf4")]
