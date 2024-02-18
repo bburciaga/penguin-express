@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 @onready var snowball_path: Resource = preload("res://entities/projectiles/snowball.tscn")
+@onready var music_player: AudioStreamPlayer = $StopTimeAudio
+@onready var shield: Sprite2D  = $Shield
+@onready var health_component: HealthComponent = $HealthComponent
 
 enum PowerupState {
 	INACTIVE,
@@ -10,15 +13,14 @@ enum PowerupState {
 var attack: Attack = Attack.new(1, self.global_position, 5)
 var can_shoot: bool = true
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED: float = 300.0
+const JUMP_VELOCITY: float = -400.0
 var powerupState: PowerupState = PowerupState.INACTIVE
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var is_time_stopped = false
-@onready var music_player = $StopTimeAudio
+var is_time_stopped: bool = false
 
 func _physics_process(delta) -> void:
 	move()
@@ -26,11 +28,11 @@ func _physics_process(delta) -> void:
 		shoot()
 	handle_time_stop()
 
-func _on_projectile_timeout():
+func _on_projectile_timeout() -> void:
 	can_shoot = true
 
 func move() -> void:
-	var direction = Input.get_axis("left", "right")
+	var direction: float = Input.get_axis("left", "right")
 	velocity.x = direction * SPEED
 
 	move_and_slide()
@@ -71,3 +73,10 @@ func activate_powerup() -> void:
 	match powerup:
 		"SHIELD":
 			powerupState = PowerupState.SHIELD
+			shield.visible = true
+			health_component.increase_health()
+			$Powerup.start()
+
+func _on_powerup_timeout() -> void:
+	powerupState = PowerupState.INACTIVE
+	shield.visible = false
