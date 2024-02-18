@@ -29,7 +29,6 @@ func shoot() -> void:
 	if Input.is_action_just_released("action"):
 		var instance: Snowball = SNOWBALL_PATH.instantiate();
 		instance.transform = $CollisionShape2D.global_transform
-		instance.rotation_degrees = 270
 		owner.add_child(instance)
 	#	start_cooldown()
 
