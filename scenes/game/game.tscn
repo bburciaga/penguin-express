@@ -1,5 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://w4oliocfgp2w"]
 
+[ext_resource type="PackedScene" uid="uid://kruqs2fdims2" path="res://utils/enemy_spawner.tscn" id="1_ax6l0"]
 [ext_resource type="PackedScene" uid="uid://j71i0pu216db" path="res://entities/player/player.tscn" id="1_ndvt2"]
 [ext_resource type="PackedScene" uid="uid://7bd10h6fsd15" path="res://entities/enemies/polarbear.tscn" id="2_7qy60"]
 [ext_resource type="PackedScene" uid="uid://xhlccqxegi02" path="res://entities/collectibles/powerup.tscn" id="3_myyle"]
@@ -36,3 +37,5 @@ shape = SubResource("RectangleShape2D_0fopp")
 
 [node name="Powerup" parent="." instance=ExtResource("3_myyle")]
 position = Vector2(257, 34)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("1_ax6l0")]

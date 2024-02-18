@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var SNOWBALL_PATH: Resource = preload("res://entities/projectiles/snowball.tscn")
+@onready var snowball_path: Resource = preload("res://entities/projectiles/snowball.tscn")
 
 enum PowerupState {
 	INACTIVE,
@@ -8,6 +8,7 @@ enum PowerupState {
 }
 
 var attack: Attack = Attack.new(1, self.global_position, 5)
+var can_shoot: bool = true
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -25,6 +26,9 @@ func _physics_process(delta) -> void:
 		shoot()
 	handle_time_stop()
 
+func _on_projectile_timeout():
+	can_shoot = true
+
 func move() -> void:
 	var direction = Input.get_axis("left", "right")
 	velocity.x = direction * SPEED
@@ -32,13 +36,13 @@ func move() -> void:
 	move_and_slide()
 
 func shoot() -> void:
-	if Input.is_action_just_released("action"):
-		var instance: Snowball = SNOWBALL_PATH.instantiate();
+	if Input.is_action_just_released("action") and can_shoot:
+		var instance: Snowball = snowball_path.instantiate();
 		instance.transform = $CollisionShape2D.global_transform
 		owner.add_child(instance)
-	#	start_cooldown()
+		can_shoot = false
+		$Projectile.start()
 
-	pass
 
 func handle_time_stop() -> void:
 	if Input.is_action_just_pressed("F"):
