@@ -10,7 +10,9 @@ func _physics_process(delta):
 	position += transform.x * SPEED * delta
 
 func _on_area_entered(area: Area2D):
+	print(area)
 	var entity = area.get_parent()
+	print(entity.name)
 	if area is HitboxComponent:
 		var hitbox: HitboxComponent = area
 		if area.is_in_group("Enemy"):
