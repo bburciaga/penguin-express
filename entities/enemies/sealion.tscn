@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcqn1opmill8l"]
+[gd_scene load_steps=6 format=3 uid="uid://bcqn1opmill8l"]
 
+[ext_resource type="Script" path="res://entities/enemies/sealion.gd" id="1_myf2y"]
 [ext_resource type="Script" path="res://entities/HealthComponent.gd" id="1_nig2b"]
 [ext_resource type="Script" path="res://entities/HitboxComponent.gd" id="2_uodfe"]
 [ext_resource type="Texture2D" uid="uid://dh4ag02h2pskd" path="res://entities/assets/sprites/enemies/SeaLion.png" id="3_x76p6"]
@@ -9,6 +10,7 @@ radius = 31.0
 height = 66.0
 
 [node name="Sealion" type="CharacterBody2D"]
+script = ExtResource("1_myf2y")
 
 [node name="HealthComponent" type="Node2D" parent="."]
 script = ExtResource("1_nig2b")
