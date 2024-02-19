@@ -7,7 +7,8 @@ extends CharacterBody2D
 
 enum PowerupState {
 	INACTIVE,
-  	SHIELD
+  	SHIELD,
+	CLONE
 }
 
 var attack: Attack = Attack.new(1, self.global_position, 5)
@@ -21,6 +22,7 @@ var powerupState: PowerupState = PowerupState.INACTIVE
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var is_time_stopped: bool = false
+var clones: Array = []
 
 func _physics_process(delta) -> void:
 	move()
@@ -41,7 +43,7 @@ func shoot() -> void:
 	if Input.is_action_just_released("action") and can_shoot:
 		var instance: Snowball = snowball_path.instantiate();
 		instance.transform = $CollisionShape2D.global_transform
-		owner.add_child(instance)
+		get_parent().add_child(instance)
 		can_shoot = false
 		$Projectile.start()
 
@@ -67,7 +69,8 @@ func start_time() -> void:
 		node.set_physics_process(true)
 
 func activate_powerup() -> void:
-	var powerups = ["SHIELD"]
+	#var powerups = ["SIELD", "CLONE"]
+	var powerups = ["CLONE"]
 	var random_index = randi() % powerups.size()
 	var powerup = powerups[random_index]
 	match powerup:
@@ -76,7 +79,30 @@ func activate_powerup() -> void:
 			shield.visible = true
 			health_component.increase_health()
 			$Powerup.start()
+		"CLONE":
+			activate_clone_powerup()
 
 func _on_powerup_timeout() -> void:
 	powerupState = PowerupState.INACTIVE
 	shield.visible = false
+	for clone in clones:
+		print("free")
+		if clone:
+			clone.queue_free()
+	clones = []
+
+func activate_clone_powerup() -> void:
+	powerupState = PowerupState.CLONE
+
+	var clone_left: Node = self.duplicate()
+	clone_left.global_position = self.global_position + Vector2(-55, 0)
+	clone_left.scale = Vector2(0.5, 0.5)
+	get_parent().add_child(clone_left)
+	clones.append(clone_left)
+
+	var clone_right: Node = self.duplicate()
+	clone_right.global_position = self.global_position + Vector2(55, 0)
+	clone_right.scale = Vector2(0.5, 0.5)
+	get_parent().add_child(clone_right)
+	clones.append(clone_right)
+	$Powerup.start()
