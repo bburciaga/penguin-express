@@ -20,7 +20,7 @@ script = ExtResource("1_vb2cn")
 [node name="HealthComponent" parent="." instance=ExtResource("1_lgbf4")]
 MAX_HEALTH = 3.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_wuawv")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Player"] instance=ExtResource("2_wuawv")]
 collision_mask = 14
 health_component = NodePath("../HealthComponent")
 
