@@ -9,7 +9,7 @@
 radius = 31.0
 height = 66.0
 
-[node name="Sealion" type="CharacterBody2D"]
+[node name="Sealion" type="CharacterBody2D" groups=["Enemy", "Stoppable"]]
 script = ExtResource("1_myf2y")
 
 [node name="HealthComponent" type="Node2D" parent="."]
@@ -31,7 +31,5 @@ position = Vector2(-1, -4)
 shape = SubResource("CapsuleShape2D_yunc2")
 
 [node name="Projectile" type="Timer" parent="."]
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
 
 [connection signal="timeout" from="Projectile" to="." method="_on_projectile_timeout"]

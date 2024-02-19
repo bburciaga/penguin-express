@@ -17,14 +17,12 @@ func _physics_process(delta) -> void:
 
 func shoot() -> void:
 	if can_shoot:
-		var instance = icicle_path.instantiate();
+		var instance: Area2D = icicle_path.instantiate();
 		instance.transform = $CollisionShape2D.global_transform
-		var direction = (player.global_position - instance.global_position).normalized()
-		#instance.direction = direction
+		var direction: Vector2 = (player.global_position - instance.global_position).normalized()
 		get_parent().add_child(instance)
 		can_shoot = false
 		$Projectile.start()
-
 
 func _on_projectile_timeout():
 	can_shoot = true

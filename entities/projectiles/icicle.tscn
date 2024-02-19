@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ib804"]
 height = 36.0
 
-[node name="Icicle" type="Area2D"]
+[node name="Icicle" type="Area2D" groups=["Stoppable"]]
 script = ExtResource("1_7at0v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
