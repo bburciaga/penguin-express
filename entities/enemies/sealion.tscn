@@ -26,6 +26,12 @@ script = ExtResource("2_uodfe")
 position = Vector2(-1, -4)
 shape = SubResource("CapsuleShape2D_yunc2")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -4)
 shape = SubResource("CapsuleShape2D_yunc2")
+
+[node name="Projectile" type="Timer" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="timeout" from="Projectile" to="." method="_on_projectile_timeout"]

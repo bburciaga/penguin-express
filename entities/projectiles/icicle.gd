@@ -1,6 +1,6 @@
 extends Area2D
 
-const SPEED: float = 150.0
+const SPEED: float = 300.0
 const MAX_Y: float = 840.0
 
 var ATTACK: Attack = Attack.new(1, self.global_position, 2.5)
