@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://w4oliocfgp2w"]
+[gd_scene load_steps=7 format=3 uid="uid://w4oliocfgp2w"]
 
 [ext_resource type="PackedScene" uid="uid://kruqs2fdims2" path="res://utils/enemy_spawner.tscn" id="1_ax6l0"]
 [ext_resource type="PackedScene" uid="uid://j71i0pu216db" path="res://entities/player/player.tscn" id="1_ndvt2"]
 [ext_resource type="PackedScene" uid="uid://7bd10h6fsd15" path="res://entities/enemies/polarbear.tscn" id="2_7qy60"]
+[ext_resource type="PackedScene" uid="uid://bcqn1opmill8l" path="res://entities/enemies/sealion.tscn" id="2_smesj"]
 [ext_resource type="PackedScene" uid="uid://xhlccqxegi02" path="res://entities/collectibles/powerup.tscn" id="3_myyle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fopp"]
@@ -19,6 +20,9 @@ color = Color(0.529412, 0.568627, 0.533333, 1)
 position = Vector2(244, 756)
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sealion" parent="." instance=ExtResource("2_smesj")]
+position = Vector2(84, 37)
 
 [node name="Polarbear" parent="." instance=ExtResource("2_7qy60")]
 position = Vector2(433, 27)
