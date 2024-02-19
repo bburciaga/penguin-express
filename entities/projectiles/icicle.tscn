@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvsyafxxus8q4"]
+[gd_scene load_steps=4 format=3 uid="uid://cvsyafxxus8q4"]
 
+[ext_resource type="Script" path="res://entities/projectiles/icicle.gd" id="1_7at0v"]
 [ext_resource type="Texture2D" uid="uid://bku54b375aqa6" path="res://entities/assets/sprites/projectiles/Icicle.png" id="1_n5ntf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ib804"]
 height = 36.0
 
 [node name="Area2D" type="Area2D"]
+script = ExtResource("1_7at0v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.313, 0.313)
@@ -14,3 +16,5 @@ texture = ExtResource("1_n5ntf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_ib804")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
