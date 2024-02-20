@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 @onready var snowball_path: Resource = preload("res://entities/projectiles/snowball.tscn")
-@onready var music_player: AudioStreamPlayer = $StopTimeAudio
 @onready var shield: Sprite2D  = $Shield
 @onready var health_component: HealthComponent = $HealthComponent
+
+var shoot_sound: AudioStream = preload("res://entities/assets/sounds/player/Shoot.wav")
+var stop_time_sound: AudioStream = preload("res://entities/assets/sounds/za-warudo.mp3")
 
 enum PowerupState {
 	INACTIVE,
@@ -46,6 +48,8 @@ func shoot() -> void:
 		get_parent().add_child(instance)
 		can_shoot = false
 		$Projectile.start()
+		$AudioStreamPlayer.stream = shoot_sound
+		$AudioStreamPlayer.play()
 
 
 func handle_time_stop() -> void:
@@ -56,11 +60,12 @@ func handle_time_stop() -> void:
 			stop_time()
 
 func stop_time() -> void:
-	music_player.play()
 	is_time_stopped = true
 	for node in get_tree().get_nodes_in_group("Stoppable"):
 		node.set_process(false)
 		node.set_physics_process(false)
+	$AudioStreamPlayer.stream = stop_time_sound
+	$AudioStreamPlayer.play()
 
 func start_time() -> void:
 	is_time_stopped = false

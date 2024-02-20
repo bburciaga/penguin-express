@@ -34,7 +34,7 @@ texture = ExtResource("3_x1dnh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_e0owk")
 
-[node name="StopTimeAudio" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_s1lyn")
 
 [node name="Projectile" type="Timer" parent="."]

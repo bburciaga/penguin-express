@@ -41,3 +41,5 @@ position = Vector2(0, 9)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_j4p5p")
 disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
