@@ -1,6 +1,13 @@
-[gd_scene format=3 uid="uid://71s0hoh181be"]
+[gd_scene load_steps=4 format=3 uid="uid://71s0hoh181be"]
+
+[ext_resource type="Script" path="res://scenes/finish/finish.gd" id="1_wcsph"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcfv5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_onk1x"]
 
 [node name="Finish" type="Node2D"]
+script = ExtResource("1_wcsph")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 480.0
@@ -33,3 +40,36 @@ offset_bottom = 345.0
 theme_override_colors/font_color = Color(0.101961, 0.0980392, 0.0784314, 1)
 theme_override_font_sizes/font_size = 26
 text = "Best Score"
+
+[node name="PlayAgain" type="Button" parent="."]
+offset_left = 176.0
+offset_top = 394.0
+offset_right = 264.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0.101961, 0.0980392, 0.0784314, 1)
+theme_override_colors/font_pressed_color = Color(0.101961, 0.0980392, 0.0784314, 1)
+theme_override_colors/font_hover_color = Color(0.101961, 0.0980392, 0.0784314, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bcfv5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bcfv5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bcfv5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bcfv5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bcfv5")
+text = "Play Again"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 193.0
+offset_top = 458.0
+offset_right = 235.0
+offset_bottom = 489.0
+theme_override_colors/font_color = Color(0.101961, 0.0980392, 0.0784314, 1)
+theme_override_colors/font_pressed_color = Color(0.101961, 0.0980392, 0.0784314, 1)
+theme_override_colors/font_hover_color = Color(0.101961, 0.0980392, 0.0784314, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_onk1x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_onk1x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_onk1x")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_onk1x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_onk1x")
+text = "Quit"
+
+[connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
