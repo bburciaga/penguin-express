@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://71s0hoh181be"]
+[gd_scene load_steps=5 format=3 uid="uid://71s0hoh181be"]
 
 [ext_resource type="Script" path="res://scenes/finish/finish.gd" id="1_wcsph"]
+[ext_resource type="AudioStream" uid="uid://d1vccia0p8ej2" path="res://entities/assets/sounds/scenes/GameOver.wav" id="2_dmb2j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcfv5"]
 
@@ -70,6 +71,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_onk1x")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_onk1x")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_onk1x")
 text = "Quit"
+
+[node name="GameOverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dmb2j")
 
 [connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

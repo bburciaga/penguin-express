@@ -8,4 +8,3 @@ func damage (attack: Attack, activate: bool = false) -> void:
 		health_component.damage(attack)
 	
 		var entity = get_parent()
-		print(entity)

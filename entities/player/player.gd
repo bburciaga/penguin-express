@@ -91,7 +91,6 @@ func _on_powerup_timeout() -> void:
 	powerupState = PowerupState.INACTIVE
 	shield.visible = false
 	for clone in clones:
-		print("free")
 		if clone:
 			clone.queue_free()
 	clones = []

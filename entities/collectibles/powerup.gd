@@ -12,7 +12,8 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if "Player" == body.name:
 		body.activate_powerup()
-		queue_free()
+		$AudioStreamPlayer.play()
+		self.visible = false
 
 func _check_bounds():
 	var rect_position = color_rect.position
