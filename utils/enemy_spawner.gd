@@ -26,6 +26,8 @@ func _on_timer_timeout() -> void:
 					enemy_spawn.global_position = get_random_position()
 					owner.add_child(enemy_spawn)
 					counter += 1
+					
+				$AudioStreamPlayer.play()
 
 func get_random_position() -> Vector2:
 	var x: float = randf_range(10, get_viewport_rect().size.x - 10)
