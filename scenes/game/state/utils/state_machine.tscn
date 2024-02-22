@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" path="res://scenes/game/state/utils/state_machine.gd" id="1_1hbbq"]
 
-[node name="StateMachine" type="Node" node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node"]
 script = ExtResource("1_1hbbq")
-initial_state = NodePath("")

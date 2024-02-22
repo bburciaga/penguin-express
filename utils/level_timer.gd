@@ -1,12 +1,17 @@
 extends Label
 
-var timer
+@onready var state_machine: StateMachine = get_tree().get_first_node_in_group("StateMachine")
+var time: int = 30
 
 func _init():
-	timer = Timer.new()
-	add_child(timer)
-	timer.autostart = true
+	self.set_text(str(time))
 
 func _on_timer_timeout():
-	print('timed out')
-	visible = not visible
+	if "Idle" == state_machine.current_state.name:
+		return
+	
+	if 0 < time:
+		time -= 1
+		self.set_text(str(time))
+	else:
+		visible = not visible

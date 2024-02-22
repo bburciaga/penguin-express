@@ -41,7 +41,7 @@ shape = SubResource("RectangleShape2D_0fopp")
 
 [node name="ItemSpawner" parent="." instance=ExtResource("5_ssrpi")]
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_foj7i")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") groups=["StateMachine"] instance=ExtResource("5_foj7i")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" parent="StateMachine" instance=ExtResource("6_yiwnh")]

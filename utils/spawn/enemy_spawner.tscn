@@ -10,7 +10,7 @@ time_start = 0
 time_end = 30
 entity = ExtResource("2_fq5rs")
 entity_num = 1
-entity_spawn_delay = 5
+entity_spawn_delay = 3
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_nju4k")
