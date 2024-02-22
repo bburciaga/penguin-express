@@ -28,14 +28,12 @@ func damage (attack: Attack, activate: bool = false) -> void:
 		#animation.play("Death")
 		#await animation.animation_finished
 		#self.queue_free()
-	if health <= 0:
-		$"../AudioStreamPlayer".stream = lose_game_sound
-		$"../AudioStreamPlayer".play()
-		get_parent().queue_free()
 
 func increase_health() -> void:
 	health += 1;
 	
 func game_over() -> void:
 	if "Player" == get_parent().name and 1 > health:
-		get_tree().change_scene_to_file("res://menus/finish/Finish.tscn")
+		$"../AudioStreamPlayer".stream = lose_game_sound
+		$"../AudioStreamPlayer".play()
+		get_tree().change_scene_to_file("res://scenes/finish/finish.tscn")
