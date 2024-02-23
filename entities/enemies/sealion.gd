@@ -4,11 +4,14 @@ const SPEED: float = 100.0
 const MAX_Y: float = 840.0
 
 @onready var player: Node2D = get_tree().get_first_node_in_group("Player")
+@onready var state_machine: StateMachine = get_tree().get_first_node_in_group("StateMachine")
 @onready var icicle_path: Resource = preload("res://entities/projectiles/icicle.tscn")
 
 var can_shoot: bool = true
 
 func _physics_process(delta) -> void:
+	if "Idle" == state_machine.current_state.name:
+		return
 	if global_position.y > MAX_Y:
 		queue_free()
 	velocity = Vector2(0, 1) * SPEED

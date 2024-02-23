@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcqn1opmill8l"]
+[gd_scene load_steps=6 format=3 uid="uid://dfltv47yhfk88"]
 
 [ext_resource type="Script" path="res://entities/enemies/sealion.gd" id="1_myf2y"]
 [ext_resource type="Script" path="res://entities/HealthComponent.gd" id="1_nig2b"]

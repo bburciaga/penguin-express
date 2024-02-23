@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://kruqs2fdims2"]
+
+[ext_resource type="Script" path="res://utils/spawn/enemy_spawner.gd" id="1_nju4k"]
+[ext_resource type="PackedScene" uid="uid://7bd10h6fsd15" path="res://entities/enemies/polarbear.tscn" id="2_fq5rs"]
+[ext_resource type="Script" path="res://utils/spawn/spawn_info.gd" id="3_5dgu3"]
+
+[sub_resource type="Resource" id="Resource_iulxl"]
+script = ExtResource("3_5dgu3")
+time_start = 0
+time_end = 30
+entity = ExtResource("2_fq5rs")
+entity_num = 1
+entity_spawn_delay = 3
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_nju4k")
+spawns = Array[ExtResource("3_5dgu3")]([SubResource("Resource_iulxl")])
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

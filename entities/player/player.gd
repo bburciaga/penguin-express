@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
+@onready var state_machine: StateMachine = get_parent().find_child("StateMachine")
 @onready var snowball_path: Resource = preload("res://entities/projectiles/snowball.tscn")
 @onready var shield: Sprite2D  = $Shield
 @onready var health_component: HealthComponent = $HealthComponent
 
 var shoot_sound: AudioStream = preload("res://entities/assets/sounds/player/Shoot.wav")
-var stop_time_sound: AudioStream = preload("res://entities/assets/sounds/za-warudo.mp3")
+#var stop_time_sound: AudioStream = preload("res://entities/assets/sounds/za-warudo.mp3")
 
 enum PowerupState {
 	INACTIVE,
@@ -17,19 +18,16 @@ var attack: Attack = Attack.new(1, self.global_position, 5)
 var can_shoot: bool = true
 
 const SPEED: float = 300.0
-const JUMP_VELOCITY: float = -400.0
 var powerupState: PowerupState = PowerupState.INACTIVE
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var is_time_stopped: bool = false
 var clones: Array = []
 
 func _physics_process(delta) -> void:
+	if "Idle" == state_machine.current_state.name:
+		return
 	move()
-	if !is_time_stopped:
-		shoot()
+	shoot()
 	handle_time_stop()
 
 func _on_projectile_timeout() -> void:
@@ -42,15 +40,15 @@ func move() -> void:
 	move_and_slide()
 
 func shoot() -> void:
-	if Input.is_action_just_released("action") and can_shoot:
-		var instance: Snowball = snowball_path.instantiate();
-		instance.transform = $CollisionShape2D.global_transform
-		get_parent().add_child(instance)
-		can_shoot = false
-		$Projectile.start()
-		$AudioStreamPlayer.stream = shoot_sound
-		$AudioStreamPlayer.play()
-
+	if !is_time_stopped:
+		if Input.is_action_just_released("action") and can_shoot:
+			var instance: Snowball = snowball_path.instantiate();
+			instance.transform = $CollisionShape2D.global_transform
+			get_parent().add_child(instance)
+			can_shoot = false
+			$Projectile.start()
+			$AudioStreamPlayer.stream = shoot_sound
+			$AudioStreamPlayer.play()
 
 func handle_time_stop() -> void:
 	if Input.is_action_just_pressed("F"):
@@ -64,8 +62,8 @@ func stop_time() -> void:
 	for node in get_tree().get_nodes_in_group("Stoppable"):
 		node.set_process(false)
 		node.set_physics_process(false)
-	$AudioStreamPlayer.stream = stop_time_sound
-	$AudioStreamPlayer.play()
+#	$AudioStreamPlayer.stream = stop_time_sound
+#	$AudioStreamPlayer.play()
 
 func start_time() -> void:
 	is_time_stopped = false

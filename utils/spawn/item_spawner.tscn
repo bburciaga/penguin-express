@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg438pyix2cnf"]
 
-[ext_resource type="Script" path="res://utils/item_spawner.gd" id="1_xj7mt"]
-[ext_resource type="PackedScene" uid="uid://xhlccqxegi02" path="res://entities/collectibles/powerup.tscn" id="2_d0yl2"]
-[ext_resource type="Script" path="res://utils/spawn_info.gd" id="3_w1m8y"]
+[ext_resource type="Script" path="res://utils/spawn/item_spawner.gd" id="1_xj7mt"]
+[ext_resource type="PackedScene" path="res://entities/collectibles/powerup.tscn" id="2_d0yl2"]
+[ext_resource type="Script" path="res://utils/spawn/spawn_info.gd" id="3_jk6hy"]
 
 [sub_resource type="Resource" id="Resource_qyiyc"]
-script = ExtResource("3_w1m8y")
+script = ExtResource("3_jk6hy")
 time_start = 0
 time_end = 30
 entity = ExtResource("2_d0yl2")
@@ -14,7 +14,7 @@ entity_spawn_delay = 10
 
 [node name="ItemSpawner" type="Node2D"]
 script = ExtResource("1_xj7mt")
-spawns = Array[ExtResource("3_w1m8y")]([SubResource("Resource_qyiyc")])
+spawns = Array[ExtResource("3_jk6hy")]([SubResource("Resource_qyiyc")])
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
