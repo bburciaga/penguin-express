@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://w4oliocfgp2w"]
+[gd_scene load_steps=10 format=3 uid="uid://w4oliocfgp2w"]
 
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_2iklo"]
 [ext_resource type="PackedScene" uid="uid://c4eq6x5l5uvyx" path="res://utils/level_timer.tscn" id="1_5weh3"]
 [ext_resource type="PackedScene" uid="uid://kruqs2fdims2" path="res://utils/spawn/enemy_spawner.tscn" id="1_ax6l0"]
 [ext_resource type="PackedScene" uid="uid://j71i0pu216db" path="res://entities/player/player.tscn" id="1_ndvt2"]
@@ -12,6 +13,7 @@
 size = Vector2(20, 840)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_2iklo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 480.0
@@ -47,3 +49,5 @@ initial_state = NodePath("Idle")
 [node name="Idle" parent="StateMachine" instance=ExtResource("6_yiwnh")]
 
 [node name="Run" parent="StateMachine" instance=ExtResource("7_rk5mv")]
+
+[connection signal="Transitioned" from="StateMachine/Idle" to="." method="_on_idle_transitioned"]
