@@ -1,16 +1,35 @@
-[gd_scene load_steps=10 format=3 uid="uid://w4oliocfgp2w"]
+[gd_scene load_steps=15 format=3 uid="uid://w4oliocfgp2w"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_2iklo"]
 [ext_resource type="PackedScene" uid="uid://c4eq6x5l5uvyx" path="res://utils/level_timer.tscn" id="1_5weh3"]
 [ext_resource type="PackedScene" uid="uid://kruqs2fdims2" path="res://utils/spawn/enemy_spawner.tscn" id="1_ax6l0"]
 [ext_resource type="PackedScene" uid="uid://j71i0pu216db" path="res://entities/player/player.tscn" id="1_ndvt2"]
 [ext_resource type="PackedScene" uid="uid://catd1pco7tasm" path="res://scenes/game/state/utils/state_machine.tscn" id="5_foj7i"]
+[ext_resource type="PackedScene" uid="uid://7bd10h6fsd15" path="res://entities/enemies/polarbear.tscn" id="5_oe8fs"]
 [ext_resource type="PackedScene" uid="uid://bg438pyix2cnf" path="res://utils/spawn/item_spawner.tscn" id="5_ssrpi"]
+[ext_resource type="Script" path="res://utils/spawn/spawn_info.gd" id="6_1cggo"]
 [ext_resource type="PackedScene" uid="uid://b7awseesca6rc" path="res://scenes/game/state/idle.tscn" id="6_yiwnh"]
+[ext_resource type="PackedScene" uid="uid://dfltv47yhfk88" path="res://entities/enemies/sealion.tscn" id="7_0rqfn"]
 [ext_resource type="PackedScene" uid="uid://xqok0bgn3o1c" path="res://scenes/game/state/run.tscn" id="7_rk5mv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fopp"]
 size = Vector2(20, 840)
+
+[sub_resource type="Resource" id="Resource_iulxl"]
+script = ExtResource("6_1cggo")
+time_start = 0
+time_end = 600
+entity = ExtResource("5_oe8fs")
+entity_num = 1
+entity_spawn_delay = 3
+
+[sub_resource type="Resource" id="Resource_hlq05"]
+script = ExtResource("6_1cggo")
+time_start = 0
+time_end = 600
+entity = ExtResource("7_0rqfn")
+entity_num = 1
+entity_spawn_delay = 3
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_2iklo")
@@ -40,6 +59,7 @@ position = Vector2(-10, 420)
 shape = SubResource("RectangleShape2D_0fopp")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_ax6l0")]
+spawns = Array[ExtResource("6_1cggo")]([SubResource("Resource_iulxl"), SubResource("Resource_hlq05")])
 
 [node name="ItemSpawner" parent="." instance=ExtResource("5_ssrpi")]
 
