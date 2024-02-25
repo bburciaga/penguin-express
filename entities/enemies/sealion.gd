@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED: float = 100.0
 const MAX_Y: float = 840.0
+var ATTACK: Attack = Attack.new(1, self.global_position, 2.5)
 
 @onready var player: Node2D = get_tree().get_first_node_in_group("Player")
 @onready var state_machine: StateMachine = get_tree().get_first_node_in_group("StateMachine")
@@ -16,6 +17,9 @@ func _physics_process(delta) -> void:
 		queue_free()
 	velocity = Vector2(0, 1) * SPEED
 	shoot()
+	
+	if 1 > self.find_child("HealthComponent").health:
+		self.queue_free()
 	move_and_slide()
 
 func shoot() -> void:
@@ -29,3 +33,10 @@ func shoot() -> void:
 
 func _on_projectile_timeout():
 	can_shoot = true
+
+
+func _on_hitbox_component_area_entered(area):
+	if area is HitboxComponent:
+		var hitbox: HitboxComponent = area
+		if area.is_in_group("Player"):
+			hitbox.damage(ATTACK)
