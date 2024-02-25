@@ -14,24 +14,8 @@ func _process(delta) -> void:
 	game_over()
 
 func damage (attack: Attack, activate: bool = false) -> void:
+	print(get_parent().name, ' is damaged')
 	health -= attack.damage
-	
-	#var animation: AnimatedSprite2D = get_parent().get_node("AnimatedSprite2D")
-	#if health >= 1:
-		#$"../AudioStreamPlayer".stream = lose_health_sound
-		#$"../AudioStreamPlayer".play()
-		#animation.play("Hurt")
-		#await animation.animation_finished
-		#animation.animation = "Idle"
-	#else:
-		#PLAYER.score += 5
-		#animation.play("Death")
-		#await animation.animation_finished
-		#self.queue_free()
-	if health <= 0:
-		#$"../AudioStreamPlayer".stream = lose_game_sound
-		#$"../AudioStreamPlayer".play()
-		get_parent().queue_free()
 
 func increase_health() -> void:
 	health += 1;

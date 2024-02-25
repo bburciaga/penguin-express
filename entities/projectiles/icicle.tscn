@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvsyafxxus8q4"]
+[gd_scene load_steps=4 format=3 uid="uid://bbxk2q3s5v1kb"]
 
 [ext_resource type="Script" path="res://entities/projectiles/icicle.gd" id="1_7at0v"]
 [ext_resource type="Texture2D" uid="uid://bku54b375aqa6" path="res://entities/assets/sprites/projectiles/Icicle.png" id="1_n5ntf"]
