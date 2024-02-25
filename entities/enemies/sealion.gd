@@ -34,7 +34,6 @@ func shoot() -> void:
 func _on_projectile_timeout():
 	can_shoot = true
 
-
 func _on_hitbox_component_area_entered(area):
 	if area is HitboxComponent:
 		var hitbox: HitboxComponent = area

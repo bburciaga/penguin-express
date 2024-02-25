@@ -17,9 +17,10 @@ script = ExtResource("1_myf2y")
 [node name="HealthComponent" parent="." instance=ExtResource("2_l34gh")]
 MAX_HEALTH = 1.0
 
-[node name="HitboxComponent" parent="." groups=["Enemy"] instance=ExtResource("3_vd4o3")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") groups=["Enemy"] instance=ExtResource("3_vd4o3")]
 collision_layer = 2
 collision_mask = 13
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -1)
