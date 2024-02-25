@@ -72,8 +72,7 @@ func start_time() -> void:
 		node.set_physics_process(true)
 
 func activate_powerup() -> void:
-	var powerups = ["SIELD", "CLONE"]
-	#var powerups = ["CLONE"]
+	var powerups = ["SHIELD", "CLONE"]
 	var random_index = randi() % powerups.size()
 	var powerup = powerups[random_index]
 	match powerup:

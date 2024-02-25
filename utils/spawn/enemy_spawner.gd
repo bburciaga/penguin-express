@@ -29,7 +29,6 @@ func _on_timer_timeout() -> void:
 			var new_enemy: PackedScene = load(str(i.entity.resource_path))
 			#var counter: int = 0
 			#while counter < i.entity_num:
-			#print("Difficulty level increased to ", difficulty_level)
 			for j in range(difficulty_level):
 				var enemy_spawn = new_enemy.instantiate()
 				enemy_spawn.global_position = get_random_position()
