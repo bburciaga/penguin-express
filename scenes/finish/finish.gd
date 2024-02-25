@@ -4,6 +4,8 @@ extends Node2D
 
 func _ready():
 	$CurrentScore.text = "Current Score " + str(player_vars.score)
+	player_vars.best_score = max(player_vars.score, player_vars.best_score)
+	$BestScore.text = "Best Score " + str(player_vars.best_score)
 	
 func _process(delta):
 	if !$GameOverAudio.is_playing():
