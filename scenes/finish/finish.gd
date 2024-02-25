@@ -1,8 +1,9 @@
 extends Node2D
 
-func _ready():
-	$GameOverAudio.play()
-	
+func _process(delta):
+	if !$GameOverAudio.is_playing():
+		$GameOverAudio.play()
+
 func _on_play_again_pressed():
 	get_tree().change_scene_to_file("res://scenes/game/game.tscn")
 
