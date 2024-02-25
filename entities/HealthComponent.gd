@@ -14,7 +14,6 @@ func _process(delta) -> void:
 	game_over()
 
 func damage (attack: Attack, activate: bool = false) -> void:
-	print(get_parent().name, ' is damaged')
 	health -= attack.damage
 
 func increase_health() -> void:
