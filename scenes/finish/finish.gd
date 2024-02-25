@@ -1,5 +1,10 @@
 extends Node2D
 
+@onready var player_vars = get_node("/root/PlayerVariables")
+
+func _ready():
+	$CurrentScore.text = "Current Score " + str(player_vars.score)
+	
 func _process(delta):
 	if !$GameOverAudio.is_playing():
 		$GameOverAudio.play()

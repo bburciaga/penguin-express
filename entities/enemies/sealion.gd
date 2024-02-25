@@ -7,6 +7,7 @@ var ATTACK: Attack = Attack.new(1, self.global_position, 2.5)
 @onready var player: Node2D = get_tree().get_first_node_in_group("Player")
 @onready var state_machine: StateMachine = get_tree().get_first_node_in_group("StateMachine")
 @onready var icicle_path: Resource = preload("res://entities/projectiles/icicle.tscn")
+@onready var player_vars = get_node("/root/PlayerVariables")
 
 var can_shoot: bool = true
 
@@ -19,6 +20,7 @@ func _physics_process(delta) -> void:
 	shoot()
 	
 	if 1 > self.find_child("HealthComponent").health:
+		player_vars.score += 5
 		self.queue_free()
 	move_and_slide()
 
